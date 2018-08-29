@@ -1,5 +1,13 @@
 @extends('layouts.master')
 
+@section('title')
+Movies Dashboard
+@endsection
+
+@section('menu-title')
+Dashboard
+@endsection
+
 @section('content')
 <!-- Dashboard Counts Section-->
 <section class="dashboard-counts no-padding-bottom">
