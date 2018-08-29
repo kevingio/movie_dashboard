@@ -11,5 +11,17 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js([
+    'resources/assets/js/app.js',
+    'resources/assets/js/jquery/jquery.validate.js',
+    'resources/assets/js/jquery/jquery.cookie.js',
+    'resources/assets/js/chartjs/Chart.js',
+    'resources/assets/js/charts-home.js',
+    'resources/assets/js/front.js'
+    ], 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .styles([
+       'resources/assets/css/fontastic.css',
+       'resources/assets/css/style.sea.css',
+       'resources/assets/css/custom.css'
+       ], 'public/css/all.css');
