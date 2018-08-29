@@ -1,1 +1,36 @@
-/* your styles go here */
+iframe {
+    border-width: 0;
+}
+
+a.movie, a.movie:hover {
+    text-decoration: none;
+    color: inherit;
+    display: inline;
+}
+
+/* Hover Zoom Animation */
+
+div.card-head.animation {
+    position: relative;
+    overflow: hidden;
+}
+
+div.card-head.animation img {
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+div.card.animation:hover img {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+div.card.animation:hover
+{
+    -webkit-box-shadow:0 1px 4px rgba(55,147,146, 0.3), 0 0 20px rgba(55,147,146, 0.3);
+    -moz-box-shadow:0 1px 4px rgba(55,147,146, 0.3), 0 0 20px rgba(55,147,146, 0.3);
+    box-shadow:0 1px 4px rgba(55,147,146, 0.3), 0 0 20px rgba(55,147,146, 0.3);
+}
+
+/* End of Hover Zoom Animation */

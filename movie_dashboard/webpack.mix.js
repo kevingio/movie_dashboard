@@ -20,6 +20,7 @@ mix.js([
     'resources/assets/js/front.js'
     ], 'public/js')
    .styles([
+       'resources/assets/css/animate.css',
        'public/css/all.css',
        'resources/assets/css/fontastic.css',
        'resources/assets/css/style.sea.css',

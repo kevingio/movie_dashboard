@@ -21,4 +21,11 @@ class MovieController extends Controller
             ->with('page', $this->page)
             ->with('menus', $this->menus);
     }
+
+    public function streaming()
+    {
+        return view('movies.streaming')
+            ->with('page', $this->page)
+            ->with('menus', $this->menus);
+    }
 }

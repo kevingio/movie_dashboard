@@ -14,7 +14,10 @@ Movie Streaming
     <!-- Inline Form-->
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-body mt-3">
+            <div class="card-header d-flex align-items-center">
+                <h4>Search Movie</h4>
+            </div>
+            <div class="card-body">
                 <form class="row">
                     <div class="col-md-8 form-group">
                         <input type="text" placeholder="Title" class="form-control">
@@ -26,8 +29,133 @@ Movie Streaming
                         <button type="submit" class="btn btn-primary btn-block">Search</button>
                     </div>
                 </form>
+                <span>Showing 4 of 10 result for Iron Man, 2008</span>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Search Result -->
+<div class="col-lg-12 mb-5">
+    <div class="card-columns">
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+<!-- Popular Movies-->
+<div class="col-lg-12 mb-5">
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <h4>Popular Movies</h4>
+        </div>
+    </div>
+    <div class="card-columns">
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+
+        <a href="{{ route('movie-streaming') }}" class="movie">
+            <div class="card animation">
+                <div class="card-head animation">
+                    <img class="card-img-top" src="img/project-1.jpg" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Movie Title</h4>
+                    <p class="card-text">Body</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
 @endsection
