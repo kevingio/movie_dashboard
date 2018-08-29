@@ -11,7 +11,6 @@
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/fontawesome/css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/all.css') }}">
         <!-- Google fonts - Poppins -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
         <!-- Favicon-->
@@ -34,13 +33,13 @@
                         <div class="navbar-holder d-flex align-items-center justify-content-between">
                             <!-- Navbar Header-->
                             <div class="navbar-header">
-                                <!-- Navbar Brand --><a href="index.html" class="navbar-brand d-none d-sm-inline-block">
+                                <!-- Navbar Brand --><a href="{{ route('home') }}" class="navbar-brand d-none d-sm-inline-block">
                                     <div class="brand-text d-none d-lg-inline-block">
                                         <span>Movies </span><strong>Dashboard</strong></div>
                                     <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div>
                                 </a>
-                                <!-- Toggle Button--><a id="toggle-btn" href="#"
-                                                        class="menu-btn active"><span></span><span></span><span></span></a>
+                                <!-- Toggle Button-->
+                                <a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
                             </div>
                             <!-- Navbar Menu -->
                             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
@@ -66,12 +65,9 @@
                     </div>
                     <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
                     <ul class="list-unstyled">
-                        <li class="active"><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-                        <li><a href="tables.html"> <i class="fa fa-film"></i>Movies </a></li>
-                        <li><a href="tables.html"> <i class="fa fa-twitter"></i>Twitter </a></li>
-                        <li><a href="charts.html"> <i class="fa fa-youtube-play"></i>Youtube </a></li>
-                        <li><a href="forms.html"> <i class="fa fa-facebook"></i>Facebook </a></li>
-                        <li><a href="forms.html"> <i class="fa fa-instagram"></i>Instagram </a></li>
+                        @foreach($menus as $menu)
+                        <li @if($menu->key == $page) class="active" @endif><a href="{{ route($menu->key) }}"> <i class="{{ $menu->icon }}"></i>{{ $menu->name }} </a></li>
+                        @endforeach
                     </ul>
                 </nav>
                 <div class="content-inner">

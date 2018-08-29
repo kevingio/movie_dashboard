@@ -13689,8 +13689,7 @@ __webpack_require__(36);
 __webpack_require__(37);
 __webpack_require__(38);
 __webpack_require__(39);
-__webpack_require__(40);
-module.exports = __webpack_require__(41);
+module.exports = __webpack_require__(40);
 
 
 /***/ }),
@@ -52162,12 +52161,6 @@ $(document).ready(function () {
         return false;
     });
 });
-
-/***/ }),
-/* 41 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

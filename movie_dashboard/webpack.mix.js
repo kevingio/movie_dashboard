@@ -19,9 +19,9 @@ mix.js([
     'resources/assets/js/charts-home.js',
     'resources/assets/js/front.js'
     ], 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
    .styles([
+       'public/css/all.css',
        'resources/assets/css/fontastic.css',
        'resources/assets/css/style.sea.css',
        'resources/assets/css/custom.css'
-       ], 'public/css/all.css');
+   ], 'public/css/app.css');
