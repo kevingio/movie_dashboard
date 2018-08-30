@@ -14,7 +14,7 @@ Iron Man (2008)
 <div class="breadcrumb-holder container-fluid">
   <ul class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('movie') }}">Movie Streaming</a></li>
-    <li class="breadcrumb-item active">Iron Man</li>
+    <li class="breadcrumb-item active">Iron Man (2008)</li>
   </ul>
 </div>
 
@@ -25,11 +25,13 @@ Iron Man (2008)
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-6">
-                        <iframe src="https://oload.stream/embed/NvOa5bPc6t4" width="100%" height="400px"></iframe>
+                        <iframe src="https://oload.stream/embed/NvOa5bPc6t4" class="mb-3" width="100%" height="400px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                     </div>
                     <div class="col-lg-6">
-                        <h2>Sinopsis</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                        <h2>Storyline</h2>
+                        <p class="text-justify">
+                            Tony Stark. Genius, billionaire, playboy, philanthropist. Son of legendary inventor and weapons contractor Howard Stark. When Tony Stark is assigned to give a weapons presentation to an Iraqi unit led by Lt. Col. James Rhodes, he's given a ride on enemy lines. That ride ends badly when Stark's Humvee that he's riding in is attacked by enemy combatants. He survives - barely - with a chest full of shrapnel and a car battery attached to his heart. In order to survive he comes up with a way to miniaturize the battery and figures out that the battery can power something else. Thus Iron Man is born. He uses the primitive device to escape from the cave in Iraq. Once back home, he then begins work on perfecting the Iron Man suit. But the man who was put in charge of Stark Industries has plans of his own to take over Tony's technology for other matters.
+                        </p>
                         <h2>Cast</h2>
                         <p>Robert Downey Jr.</p>
                         <h2>Rating</h2>

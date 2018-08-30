@@ -1427,24 +1427,25 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 
 /*====== Daily Feeds Box ======*/
 .daily-feeds .item {
-  padding: 20px;
   border-bottom: 1px solid #eee;
 }
 
 .daily-feeds .feed-profile {
-  max-width: 50px;
-  min-width: 50px;
+  max-width: 90px;
+  min-width: 90px;
+  height: auto;
   margin-right: 10px;
 }
 
-.daily-feeds h5 {
+.daily-feeds h5, .daily-feeds h4 {
   margin-bottom: 0;
   color: #555;
 }
 
 .daily-feeds span {
-  font-size: 0.8em;
-  color: #999;
+  font-size: 0.9em;
+  color: orange;
+  margin-bottom: 8px;
 }
 
 .daily-feeds .full-date {
@@ -2032,8 +2033,8 @@ STYLE SWITCHER FOR DEMO
   color: #495057;
 }
 
-/* ========================================= 
-   THEMING OF BOOTSTRAP COMPONENTS           
+/* =========================================
+   THEMING OF BOOTSTRAP COMPONENTS
    ========================================= */
 /*
  * 1. NAVBAR
@@ -2795,7 +2796,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 /*
- * 3. TYPE  
+ * 3. TYPE
  */
 body {
   font-family: "Poppins", sans-serif;

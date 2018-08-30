@@ -14079,7 +14079,6 @@ a.text-dark:focus {
   }
 }
 
-
 @charset "UTF-8";
 
 @font-face {
@@ -15631,24 +15630,25 @@ section.dashboard-counts div[class*='col-']:last-of-type .item {
 
 /*====== Daily Feeds Box ======*/
 .daily-feeds .item {
-  padding: 20px;
   border-bottom: 1px solid #eee;
 }
 
 .daily-feeds .feed-profile {
-  max-width: 50px;
-  min-width: 50px;
+  max-width: 90px;
+  min-width: 90px;
+  height: auto;
   margin-right: 10px;
 }
 
-.daily-feeds h5 {
+.daily-feeds h5, .daily-feeds h4 {
   margin-bottom: 0;
   color: #555;
 }
 
 .daily-feeds span {
-  font-size: 0.8em;
-  color: #999;
+  font-size: 0.9em;
+  color: orange;
+  margin-bottom: 8px;
 }
 
 .daily-feeds .full-date {
@@ -16236,8 +16236,8 @@ STYLE SWITCHER FOR DEMO
   color: #495057;
 }
 
-/* ========================================= 
-   THEMING OF BOOTSTRAP COMPONENTS           
+/* =========================================
+   THEMING OF BOOTSTRAP COMPONENTS
    ========================================= */
 /*
  * 1. NAVBAR
@@ -16999,7 +16999,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 /*
- * 3. TYPE  
+ * 3. TYPE
  */
 body {
   font-family: "Poppins", sans-serif;
@@ -17700,8 +17700,48 @@ a > code {
   font-size: 125%;
 }
 
+@media (min-width: 576px) {
+  .card-columns {
+    -webkit-column-count: 4;
+    column-count: 4;
+  }
+}
+
+.card-body span.font-orange {
+    margin-bottom: 8px;
+}
+
+.font-orange {
+    color: orange;
+}
+
+h3.trending-title {
+    margin-bottom: 0;
+    color: #555;
+}
+
+.trending-number > h1 {
+    color: #555;
+}
+
+.trending-text > small {
+    color: #aaa;
+}
+
+.trending-number {
+    border-right: 1px solid #eee;
+}
+
+.trending-number, .trending-content {
+    padding: 1rem;
+}
+
 iframe {
     border-width: 0;
+}
+
+a.movie {
+    margin-bottom: 1rem;
 }
 
 a.movie, a.movie:hover {
