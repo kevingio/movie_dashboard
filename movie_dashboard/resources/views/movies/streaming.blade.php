@@ -127,7 +127,34 @@ Movie Streaming
     </div>
 </section>
 
-<section class="no-padding-bottom">
+<!-- Movie Casts -->
+<section class="no-padding" style="margin-top: 30px;">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h2>Casts ({{ count($casts) }} persons)</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach($casts as $key => $cast)
+                <div class="col-lg-2">
+                    <div class="card">
+                        <div class="card-head">
+                            <img src="{{ $cast->profile_path }}" class="img-fluid" alt="{{ $cast->name }}">
+                        </div>
+                        <div class="card-body text-center">
+                            <h4 class="mt-3">{{ $cast->character }}</h4>
+                            <span>{{ $cast->name }}</span>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- Movie Streaming -->
+<section class="no-padding-top">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">

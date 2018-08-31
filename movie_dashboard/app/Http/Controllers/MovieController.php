@@ -11,7 +11,7 @@ class MovieController extends Controller
 {
     private $page = 'movie';
     private $menus;
-    private $base_image_url = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/';
+    private $base_image_url = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2';
     private $client;
 
     public function __construct()
@@ -105,6 +105,11 @@ class MovieController extends Controller
 
         $request = $this->client->get('https://api.themoviedb.org/3/movie/'.$id.'/credits?api_key=757cc7494e774799984d5df49439f890');
         $casts = json_decode($request->getBody()->getContents());
+        $casts->cast = array_slice($casts->cast, 0, 12, true);
+
+        foreach ($casts->cast as $cast) {
+            $cast->profile_path = $this->base_image_url . $cast->profile_path;
+        }
 
         // $request = $client->get('https://hydramovies.com/streams/api/video-player.php?id='. $movie->imdb_id);
         // $streaming_url = $request->getBody()->getContents();
@@ -114,7 +119,7 @@ class MovieController extends Controller
             ->with('page', $this->page)
             ->with('menus', $this->menus)
             ->with('movie', $movie)
-            ->with('casts', $casts)
+            ->with('casts', $casts->cast)
             ->with('url', $streaming_url);
     }
 
