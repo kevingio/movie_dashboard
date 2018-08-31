@@ -42,10 +42,10 @@ Movie Streaming
         <div class="card">
             <div class="card-header">
                 <nav class="nav nav-pills nav-justified">
-                    <a class="nav-item nav-link active" href="#">Popular</a>
-                    <a class="nav-item nav-link" href="#">Top Rated</a>
-                    <a class="nav-item nav-link" href="#">Now Playing</a>
-                    <a class="nav-item nav-link" href="#">Coming Soon</a>
+                    <a class="nav-item nav-link active" data-toggle="tab" href="#nav-popular" role="tab" aria-controls="nav-popular" aria-selected="true">Popular</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-top-rated" role="tab" aria-controls="nav-top-rated" aria-selected="false">Top Rated</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-now-playing" role="tab" aria-controls="nav-now-playing" aria-selected="false">Now Playing</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-coming-soon" role="tab" aria-controls="nav-coming-soon" aria-selected="false">Coming Soon</a>
                 </nav>
             </div>
         </div>
@@ -55,26 +55,105 @@ Movie Streaming
 <section class="no-padding-top">
     <div class="container-fluid">
         <div class="card-columns">
-            @foreach($trending_movies as $movie)
-            <a href="{{ route('movie-streaming', [$movie->id]) }}" class="movie">
-                <div class="card animation">
-                    <div class="card-head animation">
-                        <img class="card-img-top" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">{{ $movie->original_title }} ({{ $movie->release_date }})</h4>
-                        <p class="card-text">
-                            @foreach($movie->genres as $key => $genre)
-                                {{ $genre }}
-                                @if($key != count($movie->genres)-1)
-                                    ,
-                                @endif
-                            @endforeach
-                        </p>
-                    </div>
+            <div class="tab-content">
+                <!-- Popular Movies Tab -->
+                <div class="tab-pane fade show active" id="nav-popular" role="tabpanel">
+                    @foreach($popular as $movie)
+                    <a href="{{ route('movie-streaming', [$movie->id]) }}" class="movie">
+                        <div class="card animation">
+                            <div class="card-head animation">
+                                <img class="card-img-top" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ $movie->original_title }} ({{ $movie->release_date }})</h4>
+                                <p class="card-text">
+                                    @foreach($movie->genres as $key => $genre)
+                                        {{ $genre }}
+                                        @if($key != count($movie->genres)-1)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
                 </div>
-            </a>
-            @endforeach
+
+                <!-- Top Rated Tab -->
+                <div class="tab-pane fade" id="nav-top-rated" role="tabpanel">
+                    @foreach($top_rated as $movie)
+                    <a href="{{ route('movie-streaming', [$movie->id]) }}" class="movie">
+                        <div class="card animation">
+                            <div class="card-head animation">
+                                <img class="card-img-top" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ $movie->original_title }} ({{ $movie->release_date }})</h4>
+                                <p class="card-text">
+                                    @foreach($movie->genres as $key => $genre)
+                                        {{ $genre }}
+                                        @if($key != count($movie->genres)-1)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+
+                <!-- Now Playing Tab -->
+                <div class="tab-pane fade" id="nav-now-playing" role="tabpanel">
+                    @foreach($now_playing as $movie)
+                    <a href="{{ route('movie-streaming', [$movie->id]) }}" class="movie">
+                        <div class="card animation">
+                            <div class="card-head animation">
+                                <img class="card-img-top" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ $movie->original_title }} ({{ $movie->release_date }})</h4>
+                                <p class="card-text">
+                                    @if(isset($movie->genres))
+                                        @foreach($movie->genres as $key => $genre)
+                                            {{ $genre }}
+                                            @if($key != count($movie->genres)-1)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+
+                <!-- Coming Soon Tab -->
+                <div class="tab-pane fade" id="nav-coming-soon" role="tabpanel">
+                    @foreach($coming_soon as $movie)
+                    <a href="{{ route('movie-streaming', [$movie->id]) }}" class="movie">
+                        <div class="card animation">
+                            <div class="card-head animation">
+                                <img class="card-img-top" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ $movie->original_title }} ({{ $movie->release_date }})</h4>
+                                <p class="card-text">
+                                    @foreach($movie->genres as $key => $genre)
+                                        {{ $genre }}
+                                        @if($key != count($movie->genres)-1)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </section>

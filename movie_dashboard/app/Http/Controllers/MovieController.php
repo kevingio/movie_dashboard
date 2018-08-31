@@ -22,11 +22,13 @@ class MovieController extends Controller
 
     public function index()
     {
-        $request = $this->client->get('https://api.themoviedb.org/3/trending/movie/week?api_key=757cc7494e774799984d5df49439f890');
-        $movies = json_decode($request->getBody()->getContents());
         $request = $this->client->get('https://api.themoviedb.org/3/genre/movie/list?api_key=757cc7494e774799984d5df49439f890&language=en-US');
         $genre_response = json_decode($request->getBody()->getContents());
-        foreach ($movies->results as $movie) {
+
+        $request = $this->client->get('https://api.themoviedb.org/3/movie/popular?api_key=757cc7494e774799984d5df49439f890&language=en-US&page=1&region=ID');
+        $popular = json_decode($request->getBody()->getContents());
+
+        foreach ($popular->results as $movie) {
             foreach ($movie->genre_ids as $genre_id) {
                 foreach ($genre_response->genres as $genre) {
                     if($genre_id == $genre->id){
@@ -37,10 +39,59 @@ class MovieController extends Controller
             $movie->poster_path = $this->base_image_url . $movie->poster_path;
             $movie->release_date = str_before($movie->release_date, '-');
         }
+
+        $request = $this->client->get('https://api.themoviedb.org/3/movie/top_rated?api_key=757cc7494e774799984d5df49439f890&language=en-US&page=1&region=ID');
+        $top_rated = json_decode($request->getBody()->getContents());
+
+        foreach ($top_rated->results as $movie) {
+            foreach ($movie->genre_ids as $genre_id) {
+                foreach ($genre_response->genres as $genre) {
+                    if($genre_id == $genre->id){
+                        $movie->genres[] = $genre->name;
+                    }
+                }
+            }
+            $movie->poster_path = $this->base_image_url . $movie->poster_path;
+            $movie->release_date = str_before($movie->release_date, '-');
+        }
+
+        $request = $this->client->get('https://api.themoviedb.org/3/movie/now_playing?api_key=757cc7494e774799984d5df49439f890&language=en-US&page=1&region=ID');
+        $now_playing = json_decode($request->getBody()->getContents());
+
+        foreach ($now_playing->results as $movie) {
+            foreach ($movie->genre_ids as $genre_id) {
+                foreach ($genre_response->genres as $genre) {
+                    if($genre_id == $genre->id){
+                        $movie->genres[] = $genre->name;
+                    }
+                }
+            }
+            $movie->poster_path = $this->base_image_url . $movie->poster_path;
+            $movie->release_date = str_before($movie->release_date, '-');
+        }
+
+        $request = $this->client->get('https://api.themoviedb.org/3/movie/upcoming?api_key=757cc7494e774799984d5df49439f890&language=en-US&page=1&region=ID');
+        $upcoming = json_decode($request->getBody()->getContents());
+
+        foreach ($upcoming->results as $movie) {
+            foreach ($movie->genre_ids as $genre_id) {
+                foreach ($genre_response->genres as $genre) {
+                    if($genre_id == $genre->id){
+                        $movie->genres[] = $genre->name;
+                    }
+                }
+            }
+            $movie->poster_path = $this->base_image_url . $movie->poster_path;
+            $movie->release_date = str_before($movie->release_date, '-');
+        }
+
         return view('movies.index')
             ->with('page', $this->page)
             ->with('menus', $this->menus)
-            ->with('trending_movies', $movies->results);
+            ->with('popular', $popular->results)
+            ->with('top_rated', $top_rated->results)
+            ->with('now_playing', $now_playing->results)
+            ->with('coming_soon', $upcoming->results);
     }
 
     public function streaming($id)
