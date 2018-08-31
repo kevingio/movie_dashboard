@@ -18,15 +18,9 @@ class MenuTableSeeder extends Seeder
         ]);
 
         DB::table('menus')->insert([
-            'name'      => 'Movie Streaming',
+            'name'      => 'Streaming',
             'icon'      => 'fa fa-film',
             'key'       => 'movie',
-        ]);
-
-        DB::table('menus')->insert([
-            'name'      => 'Facebook',
-            'icon'      => 'fa fa-facebook',
-            'key'       => 'facebook',
         ]);
 
         DB::table('menus')->insert([

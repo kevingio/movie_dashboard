@@ -15,7 +15,7 @@ Route::get('/', 'DashboardController@index')->name('home');
 
 Route::get('/movie', 'MovieController@index')->name('movie');
 
-Route::get('/movie/streaming', 'MovieController@streaming')->name('movie-streaming');
+Route::get('/movie/streaming/{id}', 'MovieController@streaming')->name('movie-streaming');
 
 Route::get('/facebook', 'MovieController@index')->name('facebook');
 

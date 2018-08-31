@@ -10,9 +10,10 @@ Movie Streaming
 
 @section('content')
 
+
+<!-- Search Form-->
 <section class="no-padding-bottom">
-    <!-- Inline Form-->
-    <div class="col-lg-12">
+    <div class="container-fluid">
         <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h4>Search Movie</h4>
@@ -35,130 +36,47 @@ Movie Streaming
     </div>
 </section>
 
-<!-- Search Result -->
-<div class="col-lg-12 mb-5">
-    <div class="card-columns">
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-
 <!-- Popular Movies-->
-<div class="col-lg-12">
-    <div class="card">
-        <div class="card-header d-flex align-items-center">
-            <h4>Popular Movies</h4>
+<section class="no-padding">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <nav class="nav nav-pills nav-justified">
+                    <a class="nav-item nav-link active" href="#">Popular</a>
+                    <a class="nav-item nav-link" href="#">Top Rated</a>
+                    <a class="nav-item nav-link" href="#">Now Playing</a>
+                    <a class="nav-item nav-link" href="#">Coming Soon</a>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="col-lg-12 mb-5">
-    <div class="card-columns">
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
+<section class="no-padding-top">
+    <div class="container-fluid">
+        <div class="card-columns">
+            @foreach($trending_movies as $movie)
+            <a href="{{ route('movie-streaming', [$movie->id]) }}" class="movie">
+                <div class="card animation">
+                    <div class="card-head animation">
+                        <img class="card-img-top" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ $movie->original_title }} ({{ $movie->release_date }})</h4>
+                        <p class="card-text">
+                            @foreach($movie->genres as $key => $genre)
+                                {{ $genre }}
+                                @if($key != count($movie->genres)-1)
+                                    ,
+                                @endif
+                            @endforeach
+                        </p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
-
-        <a href="{{ route('movie-streaming') }}" class="movie">
-            <div class="card animation">
-                <div class="card-head animation">
-                    <img class="card-img-top" src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/inVq3FRqcYIRl2la8iZikYYxFNR.jpg" alt="Card image cap">
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Movie Title</h4>
-                    <p class="card-text">Action, Horror, Romance</p>
-                </div>
-            </div>
-        </a>
+            </a>
+            @endforeach
+        </div>
     </div>
-</div>
+</section>
 
 @endsection

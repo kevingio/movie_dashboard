@@ -5,7 +5,7 @@ Movie Streaming
 @endsection
 
 @section('menu-title')
-Iron Man (2008)
+{{ $movie->original_title }} ({{ $movie->release_date }})
 @endsection
 
 @section('content')
@@ -14,28 +14,126 @@ Iron Man (2008)
 <div class="breadcrumb-holder container-fluid">
   <ul class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{ route('movie') }}">Movie Streaming</a></li>
-    <li class="breadcrumb-item active">Iron Man (2008)</li>
+    <li class="breadcrumb-item active">{{ $movie->original_title }} ({{ $movie->release_date }})</li>
   </ul>
 </div>
 
 <section class="no-padding-bottom">
-    <!-- Inline Form-->
-    <div class="col-lg-12">
+    <div class="container-fluid">
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-6">
-                        <iframe src="https://oload.stream/embed/NvOa5bPc6t4" class="mb-3" width="100%" height="400px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                    <div class="col-lg-4">
+                        <img class="card-img-top img-fluid" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-8">
                         <h2>Storyline</h2>
                         <p class="text-justify">
-                            Tony Stark. Genius, billionaire, playboy, philanthropist. Son of legendary inventor and weapons contractor Howard Stark. When Tony Stark is assigned to give a weapons presentation to an Iraqi unit led by Lt. Col. James Rhodes, he's given a ride on enemy lines. That ride ends badly when Stark's Humvee that he's riding in is attacked by enemy combatants. He survives - barely - with a chest full of shrapnel and a car battery attached to his heart. In order to survive he comes up with a way to miniaturize the battery and figures out that the battery can power something else. Thus Iron Man is born. He uses the primitive device to escape from the cave in Iraq. Once back home, he then begins work on perfecting the Iron Man suit. But the man who was put in charge of Stark Industries has plans of his own to take over Tony's technology for other matters.
+                            {{ $movie->overview }}
                         </p>
-                        <h2>Cast</h2>
-                        <p>Robert Downey Jr.</p>
-                        <h2>Rating</h2>
-                        <p>6.7</p>
+
+                        <h2>Genre</h2>
+                        <p>
+                            @foreach($movie->genres as $key => $genre)
+                                {{ $genre->name }}
+                                @if($key !== count($movie->genres)-1)
+                                    ,
+                                @endif
+                            @endforeach
+                        </p>
+
+                        <h2>Trailer</h2>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{ $movie->poster_path }}" style="width: 100%; height: 150px;" alt="">
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{ $movie->poster_path }}" style="width: 100%; height: 150px;" alt="">
+                            </div>
+                            <div class="col-lg-4">
+                                <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{ $movie->poster_path }}" style="width: 100%; height: 150px;" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard Counts Section-->
+<section class="dashboard-counts no-padding">
+    <div class="container-fluid">
+        <div class="row bg-white has-shadow">
+            <!-- Item -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-violet"><i class="fa fa-money"></i></div>
+                    <div class="title">
+                        <span>Budget</span>
+                        <br>
+                        <span class="revenue"> USD {{ $movie->budget }}</span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-green"><i class="fa fa-line-chart"></i></div>
+                    <div class="title">
+                        <span>Revenue</span>
+                        <br>
+                        <span class="revenue"> USD {{ $movie->revenue }}</span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-red"><i class="fa fa-star"></i></div>
+                    <div class="title">
+                        <span>Rating</span>
+                        <br>
+                        <span class="revenue">{{ $movie->vote_average }}</span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="item d-flex align-items-center">
+                    <div class="icon bg-yellow"><i class="fa fa-rss"></i></div>
+                    <div class="title">
+                        <span>Popularity</span>
+                        <span class="revenue">{{ $movie->popularity }}</span>
+                        <div class="progress">
+                            <div role="progressbar" style="width: 100%; height: 4px;" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-yellow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="no-padding-bottom">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <iframe src="{{ $url }}" id="test" width="100%" height="500px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
                     </div>
                 </div>
             </div>

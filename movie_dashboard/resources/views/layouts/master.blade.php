@@ -44,8 +44,11 @@
                             <!-- Navbar Menu -->
                             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                                 <!-- Search-->
-                                <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i
-                                                class="icon-search"></i></a></li>
+                                <li class="nav-item d-flex align-items-center">
+                                    <a id="search" href="#">
+                                        <i class="icon-search"></i>
+                                    </a>
+                                </li>
 
                             </ul>
                         </div>
@@ -55,14 +58,6 @@
             <div class="page-content d-flex align-items-stretch">
                 <!-- Side Navbar -->
                 <nav class="side-navbar">
-                    <!-- Sidebar Header-->
-                    <!-- <div class="sidebar-header d-flex align-items-center">
-                        <div class="avatar"><img src="{{ asset('img/avatar-1.jpg') }}" alt="..." class="img-fluid rounded-circle"></div>
-                        <div class="title">
-                            <h1 class="h4">Mark Stephen</h1>
-                            <p>Web Designer</p>
-                        </div>
-                    </div> -->
                     <!-- Sidebar Navidation Menus--><span class="heading mt-3">Main</span>
                     <ul class="list-unstyled">
                         @foreach($menus as $menu)

@@ -5,7 +5,7 @@ Movies Dashboard
 @endsection
 
 @section('menu-title')
-Dashboard
+Facebook
 @endsection
 
 @section('content')

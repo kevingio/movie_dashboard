@@ -27,6 +27,8 @@ h3.trending-title {
 }
 
 .trending-number {
+    min-width: 71px;
+    text-align: center;
     border-right: 1px solid #eee;
 }
 
@@ -46,6 +48,11 @@ a.movie, a.movie:hover {
     text-decoration: none;
     color: inherit;
     display: inline;
+}
+
+.revenue {
+    color: black;
+    font-weight: 800;
 }
 
 /* Hover Zoom Animation */
