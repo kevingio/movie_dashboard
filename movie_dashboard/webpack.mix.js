@@ -15,8 +15,6 @@ mix.js([
     'resources/assets/js/app.js',
     'resources/assets/js/jquery/jquery.validate.js',
     'resources/assets/js/jquery/jquery.cookie.js',
-    'resources/assets/js/chartjs/Chart.js',
-    'resources/assets/js/charts-home.js',
     'resources/assets/js/front.js'
     ], 'public/js')
    .styles([

@@ -111,15 +111,31 @@ class MovieController extends Controller
             $cast->profile_path = $this->base_image_url . $cast->profile_path;
         }
 
-        // $request = $client->get('https://hydramovies.com/streams/api/video-player.php?id='. $movie->imdb_id);
-        // $streaming_url = $request->getBody()->getContents();
-        $streaming_url = 'https://hydramovies.com/streams/api/video-player.php?id='. $movie->imdb_id;
+        $streaming_url = 'https://hydramovies.com/streams/api/video-player.php?id='.$movie->imdb_id;
+
+        $request = $this->client->get('https://api.themoviedb.org/3/movie/'.$id.'/recommendations?api_key=757cc7494e774799984d5df49439f890&language=en-US&page=1');
+        $recommendations = json_decode($request->getBody()->getContents());
+        $request = $this->client->get('https://api.themoviedb.org/3/genre/movie/list?api_key=757cc7494e774799984d5df49439f890&language=en-US');
+        $genre_response = json_decode($request->getBody()->getContents());
+
+        foreach ($recommendations->results as $item) {
+            foreach ($item->genre_ids as $genre_id) {
+                foreach ($genre_response->genres as $genre) {
+                    if($genre_id == $genre->id){
+                        $item->genres[] = $genre->name;
+                    }
+                }
+            }
+            $item->poster_path = $this->base_image_url . $item->poster_path;
+            $item->release_date = str_before($item->release_date, '-');
+        }
 
         return view('movies.streaming')
             ->with('page', $this->page)
             ->with('menus', $this->menus)
             ->with('movie', $movie)
             ->with('casts', $casts->cast)
+            ->with('recommendations', $recommendations->results)
             ->with('url', $streaming_url);
     }
 

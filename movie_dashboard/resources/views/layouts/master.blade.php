@@ -14,7 +14,7 @@
         <!-- Google fonts - Poppins -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
         <!-- Favicon-->
-        <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
+        <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/jpg">
 
     </head>
     <body>

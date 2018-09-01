@@ -154,16 +154,41 @@ Movie Streaming
 </section>
 
 <!-- Movie Streaming -->
+<section>
+    <div class="container-fluid">
+        <iframe src="{{ $url }}" id="test" width="100%" height="500px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+    </div>
+</section>
+
+<!-- Recommendation Movies -->
 <section class="no-padding-top">
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <iframe src="{{ $url }}" id="test" width="100%" height="500px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+                <h2>Recommendations</h2>
+            </div>
+        </div>
+        <div class="card-columns">
+            @foreach($recommendations as $movie)
+            <a href="{{ route('movie-streaming', [$movie->id]) }}" class="movie">
+                <div class="card animation">
+                    <div class="card-head animation">
+                        <img class="card-img-top" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">{{ $movie->original_title }} ({{ $movie->release_date }})</h4>
+                        <p class="card-text">
+                            @foreach($movie->genres as $key => $genre)
+                                {{ $genre }}
+                                @if($key != count($movie->genres)-1)
+                                    ,
+                                @endif
+                            @endforeach
+                        </p>
                     </div>
                 </div>
-            </div>
+            </a>
+            @endforeach
         </div>
     </div>
 </section>
