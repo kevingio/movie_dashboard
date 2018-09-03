@@ -24,12 +24,6 @@ class MenuTableSeeder extends Seeder
         ]);
 
         DB::table('menus')->insert([
-            'name'      => 'Instagram',
-            'icon'      => 'fa fa-instagram',
-            'key'       => 'instagram',
-        ]);
-
-        DB::table('menus')->insert([
             'name'      => 'Twitter',
             'icon'      => 'fa fa-twitter',
             'key'       => 'twitter',
