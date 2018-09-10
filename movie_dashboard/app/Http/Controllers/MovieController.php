@@ -151,4 +151,62 @@ class MovieController extends Controller
             return $value;
         }
     }
+
+    public function searchMovies(Request $request)
+    {
+        $year = 0;
+        if(empty($request->get('year'))){
+            $year = 0;
+            $api_request = $this->client->get('https://api.themoviedb.org/3/search/movie?api_key=757cc7494e774799984d5df49439f890&query=' . $request->get('title') . '&include_adult=true');
+        }else {
+            $api_request = $this->client->get('https://api.themoviedb.org/3/search/movie?api_key=757cc7494e774799984d5df49439f890&query=' . $request->get('title') . '&include_adult=true&year=' . $request->get('year'));
+        }
+        $movies = json_decode($api_request->getBody()->getContents());
+        $api_request = $this->client->get('https://api.themoviedb.org/3/genre/movie/list?api_key=757cc7494e774799984d5df49439f890&language=en-US');
+        $genre_response = json_decode($api_request->getBody()->getContents());
+        foreach ($movies->results as $item) {
+            foreach ($item->genre_ids as $genre_id) {
+                foreach ($genre_response->genres as $genre) {
+                    if($genre_id == $genre->id){
+                        $item->genres[] = $genre->name;
+                    }
+                }
+            }
+            $item->poster_path = $this->base_image_url . $item->poster_path;
+            $item->release_date = str_before($item->release_date, '-');
+        }
+        $search_data = array('title' => $request->get('title'), 'year' => $year);
+
+        return view('movies.search-result')
+            ->with('page', $this->page)
+            ->with('menus', $this->menus)
+            ->with('search_data', $search_data)
+            ->with('movies', $movies->results);
+    }
+
+    public function test()
+    {
+        $items = array(
+            array('parent_id' => 1, 'id' => 4, 'name' => 'Item 1'),
+            array('parent_id' => 1, 'id' => 5, 'name' => 'Item 2')
+        );
+
+        $no_arr = array();
+        $sections = array(
+            array('parent_id' => 'null', 'id' => 1, 'name' => 'Section 1'),
+            array('parent_id' => 'null', 'id' => 2, 'name' => 'Section 2')
+        );
+        $data = array();
+        foreach ($sections as $key => $section) {
+            array_push($data, $section);
+            foreach ($items as $item) {
+                if($section['id'] == $item['parent_id']){
+                    $data[$key]['items'] = $item;
+                }
+            }
+        }
+        print_r($data);
+        echo "<br><br>";
+        return '';
+    }
 }

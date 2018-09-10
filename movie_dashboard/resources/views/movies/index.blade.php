@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-Movie Streaming
+    Movie Collections
 @endsection
 
 @section('menu-title')
-Movie Streaming
+    Movie Collections
 @endsection
 
 @section('content')
@@ -19,18 +19,17 @@ Movie Streaming
                 <h4>Search Movie</h4>
             </div>
             <div class="card-body">
-                <form class="row">
+                <form action="{{ route('search-movie') }}" method="get" class="row">
                     <div class="col-md-8 form-group">
-                        <input type="text" placeholder="Title" class="form-control">
+                        <input type="text" placeholder="Title (required)" name="title" class="form-control" required>
                     </div>
                     <div class="col-md-2 form-group">
-                        <input type="text" placeholder="Year" class="form-control">
+                        <input type="text" placeholder="Year (optional)" name="year" class="form-control">
                     </div>
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-primary btn-block">Search</button>
                     </div>
                 </form>
-                <span>Showing 4 of 10 result for Iron Man, 2008</span>
             </div>
         </div>
     </div>

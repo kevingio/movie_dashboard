@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('title')
-Movie Streaming
+    {{ $movie->original_title }} ({{ $movie->release_date }})
 @endsection
 
 @section('menu-title')
-{{ $movie->original_title }} ({{ $movie->release_date }})
+    {{ $movie->original_title }} ({{ $movie->release_date }})
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@ Movie Streaming
 <!-- Breadcrumb-->
 <div class="breadcrumb-holder container-fluid">
   <ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ route('movie') }}">Movie Streaming</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('movie') }}">Movie Collections</a></li>
     <li class="breadcrumb-item active">{{ $movie->original_title }} ({{ $movie->release_date }})</li>
   </ul>
 </div>

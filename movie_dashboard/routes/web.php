@@ -17,10 +17,8 @@ Route::get('/movie', 'MovieController@index')->name('movie');
 
 Route::get('/movie/streaming/{id}', 'MovieController@streaming')->name('movie-streaming');
 
-Route::get('/facebook', 'MovieController@index')->name('facebook');
-
-Route::get('/instagram', 'MovieController@index')->name('instagram');
-
-Route::get('/twitter', 'MovieController@index')->name('twitter');
+Route::get('/movie/search/', 'MovieController@searchMovies')->name('search-movie');
 
 Route::get('/youtube', 'MovieController@index')->name('youtube');
+
+Route::get('/test', 'MovieController@test')->name('test');
