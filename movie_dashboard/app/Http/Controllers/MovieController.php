@@ -155,10 +155,10 @@ class MovieController extends Controller
     public function searchMovies(Request $request)
     {
         $year = 0;
-        if(empty($request->get('year'))){
-            $year = 0;
+        if(is_null($request->get('year')) && empty($request->get('year'))){
             $api_request = $this->client->get('https://api.themoviedb.org/3/search/movie?api_key=757cc7494e774799984d5df49439f890&query=' . $request->get('title') . '&include_adult=true');
         }else {
+            $year = $request->get('year');
             $api_request = $this->client->get('https://api.themoviedb.org/3/search/movie?api_key=757cc7494e774799984d5df49439f890&query=' . $request->get('title') . '&include_adult=true&year=' . $request->get('year'));
         }
         $movies = json_decode($api_request->getBody()->getContents());
@@ -171,6 +171,9 @@ class MovieController extends Controller
                         $item->genres[] = $genre->name;
                     }
                 }
+            }
+            if(!isset($item->genres)){
+                $item->genres = array();
             }
             $item->poster_path = $this->base_image_url . $item->poster_path;
             $item->release_date = str_before($item->release_date, '-');

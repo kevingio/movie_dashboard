@@ -31,7 +31,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Search</button>
                     </div>
                 </form>
-                <span>Showing {{ count($movies) }} for {{ ucwords($search_data['title']) }} @if($search_data['year'] !== 0) ($search_data['year']) @endif</span>
+                <span>Showing {{ count($movies) }} entries for {{ ucwords($search_data['title']) }} @if($search_data['year'] !== 0) ($search_data['year']) @endif</span>
             </div>
         </div>
     </div>

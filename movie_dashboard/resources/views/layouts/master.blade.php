@@ -25,8 +25,8 @@
                     <!-- Search Box-->
                     <div class="search-box">
                         <button class="dismiss"><i class="icon-close"></i></button>
-                        <form id="searchForm" action="#" role="search">
-                            <input type="search" placeholder="What are you looking for..." class="form-control">
+                        <form id="searchForm" action="{{ route('search-movie') }}" method="get" role="search">
+                            <input type="search" placeholder="Search movie by title..." name="title" class="form-control">
                         </form>
                     </div>
                     <div class="container-fluid">
