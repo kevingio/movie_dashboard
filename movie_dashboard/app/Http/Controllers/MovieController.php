@@ -126,6 +126,9 @@ class MovieController extends Controller
                     }
                 }
             }
+            if(!isset($item->genres)){
+                $item->genres = array();
+            }
             $item->poster_path = $this->base_image_url . $item->poster_path;
             $item->release_date = str_before($item->release_date, '-');
         }

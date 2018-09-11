@@ -132,7 +132,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h2>Casts ({{ count($casts) }} persons)</h2>
+                <h2>Casts</h2>
             </div>
         </div>
         <div class="row">
