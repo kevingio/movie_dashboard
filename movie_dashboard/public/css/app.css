@@ -17706,6 +17706,11 @@ a > code {
     -webkit-column-count: 4;
     column-count: 4;
   }
+
+  .card-columns.reviews {
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
 }
 
 .card-body span.font-orange {
@@ -17756,6 +17761,19 @@ a.movie, a.movie:hover {
 .revenue {
     color: black;
     font-weight: 800;
+}
+
+media (min-width: 576px){
+    img {
+        margin-bottom: 10px;
+    }
+}
+
+.trailer {
+    width: 100%;
+    min-height: 250px;
+    height: auto;
+
 }
 
 /* Hover Zoom Animation */

@@ -115,6 +115,7 @@ class MovieController extends Controller
 
         $request = $this->client->get('https://api.themoviedb.org/3/movie/'.$id.'/recommendations?api_key=757cc7494e774799984d5df49439f890&language=en-US&page=1');
         $recommendations = json_decode($request->getBody()->getContents());
+        $recommendations->results = array_slice($recommendations->results, 0, 4, true);
         $request = $this->client->get('https://api.themoviedb.org/3/genre/movie/list?api_key=757cc7494e774799984d5df49439f890&language=en-US');
         $genre_response = json_decode($request->getBody()->getContents());
 
@@ -133,13 +134,34 @@ class MovieController extends Controller
             $item->release_date = str_before($item->release_date, '-');
         }
 
+        $request = $this->client->get('https://api.themoviedb.org/3/movie/'.$id.'/videos?api_key=757cc7494e774799984d5df49439f890&language=en-US');
+        $trailer = json_decode($request->getBody()->getContents());
+        $trailer->results = array_slice($trailer->results, 0, 1, true);
+        $trailer->results[0]->key = 'https://www.youtube.com/embed/' . $trailer->results[0]->key;
+
+        $request = $this->client->get('https://api.themoviedb.org/3/movie/'.$id.'/reviews?api_key=757cc7494e774799984d5df49439f890&language=en-US&page=1');
+        $reviews = json_decode($request->getBody()->getContents());
+        $reviews->results = array_slice($reviews->results, 0, 4, true);
+        foreach ($reviews->results as $review) {
+            if(strlen($review->content) > 200){
+                $review->content = substr($review->content,0,150) . '...';
+                $review->isTrimmed = true;
+            } else if($review->content == ''){
+                unset($review);
+            } else {
+                $review->isTrimmed = false;
+            }
+        }
+
         return view('movies.streaming')
             ->with('page', $this->page)
             ->with('menus', $this->menus)
             ->with('movie', $movie)
             ->with('casts', $casts->cast)
             ->with('recommendations', $recommendations->results)
-            ->with('url', $streaming_url);
+            ->with('url', $streaming_url)
+            ->with('trailer', $trailer->results[0])
+            ->with('reviews', $reviews->results);
     }
 
     private function moneyConvertion($value)

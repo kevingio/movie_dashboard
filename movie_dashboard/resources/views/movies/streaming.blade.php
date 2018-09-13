@@ -24,7 +24,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-4">
-                        <img class="card-img-top img-fluid" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
+                        <img class="card-img-top img-fluid mb-3" src="{{ $movie->poster_path }}" alt="{{ $movie->original_title }}">
                     </div>
                     <div class="col-lg-8">
                         <h2>Storyline</h2>
@@ -41,19 +41,14 @@
                                 @endif
                             @endforeach
                         </p>
-
-                        <h2>Trailer</h2>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{ $movie->poster_path }}" style="width: 100%; height: 150px;" alt="">
+                        @if(isset($trailer) && !empty($trailer))
+                            <h2>Trailer</h2>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <iframe src="{{ $trailer->key }}" class="trailer"></iframe>
+                                </div>
                             </div>
-                            <div class="col-lg-4">
-                                <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{ $movie->poster_path }}" style="width: 100%; height: 150px;" alt="">
-                            </div>
-                            <div class="col-lg-4">
-                                <img src="https://image.tmdb.org/t/p/w185_and_h278_bestv2/{{ $movie->poster_path }}" style="width: 100%; height: 150px;" alt="">
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -140,7 +135,7 @@
                 <div class="col-lg-2">
                     <div class="card">
                         <div class="card-head">
-                            <img src="{{ $cast->profile_path }}" class="img-fluid" alt="{{ $cast->name }}">
+                            <img src="{{ $cast->profile_path }}" class="img-fluid" style="width: 100%;" alt="{{ $cast->name }}">
                         </div>
                         <div class="card-body text-center">
                             <h4 class="mt-3">{{ $cast->character }}</h4>
@@ -160,7 +155,7 @@
     </div>
 </section>
 
-<!-- Recommendation Movies -->
+<!-- Movie Recommendations -->
 <section class="no-padding-top">
     <div class="container-fluid">
         <div class="card">
@@ -188,6 +183,36 @@
                     </div>
                 </div>
             </a>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!--  Movie Reviews -->
+<section class="no-padding-top">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                @if(!empty($reviews))
+                    <h2>Reviews</h2>
+                @else
+                    <h2>No Reviews</h2>
+                @endif
+            </div>
+        </div>
+
+        <div class="card-columns reviews">
+            @foreach($reviews as $review)
+            <div class="card">
+                <div class="card-body text-justify">
+                    {!! $review->content !!} - <strong>{{ $review->author }}</strong>
+                    @if($review->isTrimmed)
+                    <div class="text-center mt-3">
+                        <a href="{{ $review->url }}" target="_blank" class="btn btn-primary">Read More</a>
+                    </div>
+                    @endif
+                </div>
+            </div>
             @endforeach
         </div>
     </div>
