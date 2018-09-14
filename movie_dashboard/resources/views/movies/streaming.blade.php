@@ -151,7 +151,7 @@
 <!-- Movie Streaming -->
 <section>
     <div class="container-fluid">
-        <iframe src="{{ $url }}" id="test" width="100%" height="500px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
+        <iframe src="{{ $url }}" id="test" width="100%" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
     </div>
 </section>
 

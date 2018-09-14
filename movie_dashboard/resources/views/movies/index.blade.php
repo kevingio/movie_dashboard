@@ -43,7 +43,7 @@
                 <nav class="nav nav-pills nav-justified">
                     <a class="nav-item nav-link active" data-toggle="tab" href="#nav-popular" role="tab" aria-controls="nav-popular" aria-selected="true">Popular</a>
                     <a class="nav-item nav-link" data-toggle="tab" href="#nav-top-rated" role="tab" aria-controls="nav-top-rated" aria-selected="false">Top Rated</a>
-                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-now-playing" role="tab" aria-controls="nav-now-playing" aria-selected="false">Now Playing</a>
+                    <a class="nav-item nav-link" data-toggle="tab" href="#nav-now-playing" role="tab" aria-controls="nav-now-playing" aria-selected="false">Playing Near You</a>
                     <a class="nav-item nav-link" data-toggle="tab" href="#nav-coming-soon" role="tab" aria-controls="nav-coming-soon" aria-selected="false">Coming Soon</a>
                 </nav>
             </div>
