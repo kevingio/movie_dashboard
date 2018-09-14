@@ -13685,9 +13685,9 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
-__webpack_require__(36);
 __webpack_require__(37);
-module.exports = __webpack_require__(38);
+__webpack_require__(38);
+module.exports = __webpack_require__(39);
 
 
 /***/ }),
@@ -13702,7 +13702,7 @@ module.exports = __webpack_require__(38);
  */
 
 __webpack_require__(12);
-
+__webpack_require__(36);
 // window.Vue = require('vue');
 
 /**
@@ -35933,6 +35933,30 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 36 */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+    $("#yt-search").on("submit", function (e) {
+        e.preventDefault();
+        $("#yt-search-results").html("");
+
+        var apiKey = "AIzaSyBaNdfu7retuO3ALr-zshsCYTnyQ6mhKqw";
+        var query = encodeURIComponent($("#query").val()).replace(/%20/g, "+");
+
+        axios.get("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&order=viewCount&q=" + query + "&key=" + apiKey).then(function (response) {
+            var results = response.data;
+            $.each(results.items, function (index, item) {
+                var content = '<div class="col-md-6">' + '<iframe src="//www.youtube.com/embed/' + item.id.videoId + '" width="100%" height="400px" allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>' + '<p><strong>' + item.snippet.title + '</strong></p>' + '</div>';
+
+                console.log(content);
+                $("#yt-search-results").append(content);
+            });
+        });
+    });
+});
+
+/***/ }),
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -37516,7 +37540,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
@@ -37638,7 +37662,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports) {
 
 $(document).ready(function () {

@@ -6,7 +6,7 @@
  */
 
 require('./bootstrap');
-
+require('./youtube');
 // window.Vue = require('vue');
 
 /**

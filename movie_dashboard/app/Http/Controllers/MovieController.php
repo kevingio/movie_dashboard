@@ -212,6 +212,13 @@ class MovieController extends Controller
             ->with('movies', $movies->results);
     }
 
+    public function searchYoutube() {
+        $this->page = 'youtube';
+        return view('movies.youtube')
+            ->with('page', $this->page)
+            ->with('menus', $this->menus);
+    }
+
     public function test()
     {
         $items = array(
