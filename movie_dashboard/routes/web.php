@@ -19,6 +19,6 @@ Route::get('/movie/streaming/{id}', 'MovieController@streaming')->name('movie-st
 
 Route::get('/movie/search/', 'MovieController@searchMovies')->name('search-movie');
 
-Route::get('/youtube', 'MovieController@index')->name('youtube');
+Route::get('/youtube', 'MovieController@searchYoutube')->name('youtube');
 
 Route::get('/test', 'MovieController@test')->name('test');
